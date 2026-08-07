@@ -31,10 +31,8 @@ const themeInitScript = `
 (function(){
   try {
     var theme = localStorage.getItem('theme');
-    if (theme !== 'light') document.documentElement.classList.add('dark');
-  } catch (e) {
-    document.documentElement.classList.add('dark');
-  }
+    if (theme === 'dark') document.documentElement.classList.add('dark');
+  } catch (e) {}
 })();
 `;
 
