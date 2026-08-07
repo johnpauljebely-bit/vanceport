@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1200" viewBox="0 0 1920 1200">
+  <defs>
+    <linearGradient id="court" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1b3f7a"/>
+      <stop offset="55%" stop-color="#2f5ea3"/>
+      <stop offset="100%" stop-color="#173461"/>
+    </linearGradient>
+    <linearGradient id="streak" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#eef4ff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#eef4ff" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#eef4ff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blurHeavy"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="blurMed"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="blurLight"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+
+  <rect width="1920" height="1200" fill="url(#court)"/>
+
+  <!-- court lines, heavily blurred -->
+  <g filter="url(#blurMed)" stroke="#eaf2ff" stroke-opacity="0.5" stroke-width="10" fill="none">
+    <line x1="0" y1="980" x2="1920" y2="980"/>
+    <line x1="200" y1="200" x2="120" y2="1150"/>
+    <line x1="1720" y1="200" x2="1800" y2="1150"/>
+    <line x1="960" y1="150" x2="960" y2="1180"/>
+  </g>
+
+  <!-- motion streaks suggesting mid-swing motion blur -->
+  <g filter="url(#blurHeavy)">
+    <rect x="300" y="420" width="900" height="90" fill="url(#streak)" transform="rotate(-8 750 460)"/>
+    <rect x="450" y="600" width="1100" height="60" fill="url(#streak)" transform="rotate(-4 1000 630)"/>
+    <rect x="200" y="300" width="700" height="40" fill="url(#streak)" transform="rotate(-14 550 320)"/>
+  </g>
+
+  <!-- blurred figure silhouette, mid-swing -->
+  <g filter="url(#blurMed)" opacity="0.85">
+    <ellipse cx="980" cy="520" rx="60" ry="90" fill="#0d1b33"/>
+    <rect x="930" y="560" width="46" height="220" rx="22" fill="#0d1b33" transform="rotate(6 950 670)"/>
+    <rect x="960" y="420" width="230" height="34" rx="17" fill="#0d1b33" transform="rotate(-32 980 440)"/>
+    <circle cx="1180" cy="360" r="20" fill="#0d1b33"/>
+  </g>
+  <g filter="url(#blurLight)" opacity="0.5">
+    <ellipse cx="1195" cy="345" rx="26" ry="26" fill="#f3f6ff"/>
+  </g>
+
+  <!-- ambient light blooms -->
+  <g filter="url(#blurHeavy)" opacity="0.35">
+    <circle cx="1500" cy="220" r="260" fill="#bcd6ff"/>
+    <circle cx="220" cy="980" r="220" fill="#0a1730"/>
+  </g>
+
+  <rect width="1920" height="1200" fill="#04070d" opacity="0.28"/>
+</svg>

@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Vance — portfolio site. Next.js (App Router) + TypeScript + Tailwind v4 + shadcn/ui (magicui + kokonutui registries).
 
-## Getting Started
-
-First, run the development server:
+## Run it
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Placeholders still to swap
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Discord / socials / email** — search for `discord.com`, `instagram.com`, and `hello@vanceco.design` across `components/` and swap in the real links/address (footer, community section, command palette).
+- **Fraunces** is used as a free approximation of Dia's serif — swap for the real licensed font in [app/layout.tsx](app/layout.tsx) if you get one.
 
-## Learn More
+## Projects
 
-To learn more about Next.js, take a look at the following resources:
+[data/projects.ts](data/projects.ts) is the single source of truth for the scattered desktop file icons, their case-study popups, and the Notes app entries — real work lives in `/public/work/<slug>/`. Edit the array and drop matching images into a new `/public/work/<slug>/` folder to add a category.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Image assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+All in place:
 
-## Deploy on Vercel
+- `/public/wallpaper/desktop-bg.jpg` — tennis motion-blur photo (hero preview frame + fullscreen desktop background).
+- `/public/icons/canva.png`, `photoshop.png`, `figma.png`, `claude.png`, `pintrist.png` (dock icons, note the filename typo — matches what's on disk).
+- `/public/icons/games.png`, `notes.png`, `canvas.png` (desktop icons).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+These render at native aspect ratio via `object-contain` (no cropping), so square icons should be square PNGs and circular ones should be circular PNGs with transparent corners.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Music
+
+Real tracks in `/public/music/`, listed in the `PLAYLIST` array in [lib/music-store.ts](lib/music-store.ts). To add more, the files must go directly in `/public/music/` — anything outside `/public` isn't served by Next.js and won't be reachable by the `<audio>` element, so a top-level `/songs` folder won't work.
+
+## Structure
+
+- `app/` — routes: `/`, `/about`, `/order`, `/faq`.
+- `components/sections/` — home page sections (hero, positioning, capabilities, community).
+- `components/desktop/` — the fullscreen "Work" desktop overlay: menu bar, dock, scattered icons, popups.
+- `components/desktop/popups/` — Canva, Photoshop, Figma, Claude, Pinterest, Notes, Games, Canvas app, and the project case-study popup.
+- `components/games/` — Snake, Tetris, Flappy, Pong, Breakout.
+- `components/canvas-app/` — the layered paint editor (tools, layers panel, history).
+- `lib/desktop-store.ts` / `lib/music-store.ts` — zustand stores.
