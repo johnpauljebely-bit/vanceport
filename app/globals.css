@@ -196,6 +196,14 @@ body {
   color: var(--text-body);
 }
 
+/* Lenis's own documented override: the root layout's html is h-full (height: 100%), which
+   otherwise clamps scrollable content to exactly the viewport once Lenis takes over wheel/touch
+   input, silently killing wheel/trackpad scroll on any page taller than one screen. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
 .gcol {
   transform-origin: center bottom;
   animation-name: gradFloat;
